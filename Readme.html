@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Beispiele</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+        <link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        
+        <script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+    </head>
+    <body class="vscode-light">
+        <h1 id="blatt-3">Blatt 3</h1>
+<h2 id="aufgabe">Aufgabe</h2>
+<p>Implementieren Sie die folgende Scheduler:</p>
+<ul>
+<li>Round-Robin (RR)</li>
+<li>Priority mit Verdrängung (PRIOP)</li>
+<li>Last Come First Served ohne Verdrängung (LCFS)</li>
+<li>Shortest Remaining Time Next mit Verdrängung (SRTNP)</li>
+<li>Highest Response Ratio Next (HRRN)</li>
+<li>Multilevel Feedback (mit 4 Levels (Level <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>=</mo><mn>0...3</mn></mrow><annotation encoding="application/x-tex">i = 0...3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mord">3</span></span></span></span>) mit <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>τ</mi><mi>i</mi></msub><mo>=</mo><msup><mn>2</mn><mi>i</mi></msup></mrow><annotation encoding="application/x-tex">\tau_{i} =2^{i}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.1132em;">τ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.1132em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.824664em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.824664em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span></span></span></span></span></span></span></span></span></span></span></span>)</li>
+</ul>
+<p>Als Orientierungshilfe ist dafür die Implementierung eines &quot;First Come First Served&quot;-Schedulers in der Datei <a href="src/FCFS.c">FCFS.c</a> bereits vorgegeben.
+Ihre Lösungen sollen in den Dateien <a href="src/RR.c">RR.c</a>, <a href="src/PRIOP.c">PRIOP.c</a>, <a href="src/LCFS.c">LCFS.c</a>, <a href="src/MLF.c">MLF.c</a>, <a href="src/HRRN.c">HRRN.c</a> und <a href="src/SRTNP.c">SRTNP.c</a> erfolgen. Entsprechende Stellen sind mit dem Kommentar &quot;//TODO&quot; gekennzeichnet. Sie können natürlich eigene Funktionen auch außerhalb der mit &quot;//TODO&quot; gekennzeichneten Funktionen erstellen. Außerdem können Sie auch die entsprechenden Headerfiles (<a href="lib/RR.h">RR.h</a>, <a href="lib/PRIOP.h">PRIOP.h</a> usw.) erweitern (siehe Hinweise in entsprechenden Files).</p>
+<h2 id="programmaufruf">Programmaufruf</h2>
+<p>Beim Aufruf des Programms soll als ersten Parameter die Abkürzung eines Namens einer Schedulingstrategie übergeben werden (also RR, PRIOP, FCFS, ...). Danach folgen immer Gruppen von drei Zahlen, die die Eigenschaften der Prozesse bestimmen: Ankunftszeit, Dauer, Priorität. Bei Round-Robin kann zusätzlich als letzen Parameter noch die Länge der Zeitscheibe angegeben werden. Der Standardwert ist ansonsten 2.</p>
+<h3 id="beispiele">Beispiele</h3>
+<p>Wir betrachten folgende drei Prozesse:</p>
+<ul>
+<li>A: Ankunft 0, Dauer 4, Priorität 2</li>
+<li>B: Ankunft 3, Dauer 3, Priorität 5</li>
+<li>C: Ankunft 5, Dauer 1, Priorität 1</li>
+</ul>
+<h4 id="beispiel-1">Beispiel 1</h4>
+<p>Aufruf dieser drei Prozesse mit &quot;First Come First Served&quot;-Scheduler</p>
+<pre><code>$ ./scheduler FCFS 0 4 2 3 3 5 5 1 1
+</code></pre>
+<p>Dies führt zur Ausgabe</p>
+<pre><code>Starting FCFS scheduler
+| A | A | A | A | B | B | B | C |
+</code></pre>
+<h4 id="beispiel-2">Beispiel 2</h4>
+<p>Aufruf dieser drei Prozesse mit &quot;Round-Robin&quot;-Scheduler mit Zeitscheibe 3</p>
+<pre><code>$ ./scheduler RR 0 4 2 3 3 5 5 1 1 3
+</code></pre>
+<p>Dies führt zur Ausgabe</p>
+<pre><code>Starting RR scheduler
+| A | A | A | B | B | B | A | C |
+</code></pre>
+<h2 id="programmablauf">Programmablauf</h2>
+<p>Die Vorgabe verarbeitet bereits die übergeben Parameter, kümmert sich um die Ausgabe der Prozesse und startet ihren Ablauf. Sie müssen nur noch um die Funktionalität der Scheduler kümmern. Dabei sollen sie zu jedem Scheduler die vier Funktionen bearbeiten. Informationen, was diese Funktionen tun sollen, sind jeweils in den header-files vermerkt. Es handelt sich jeweils um äquivalente Funktionen, die aber je nach scheduler unterschiedlich aussehen können.</p>
+<p>Zuerst wird immer die Funktion <strong>int xx_startup()</strong>. In dieser können sie alles tun, was einmalig notwendig ist, um die nachfolgenden Funktionen auszuführen, zum Beispiel Variablen initialisieren o.Ä.
+Dann werden in einer Schleife die Funktionen <strong>process* xx_new_arrival(process* arriving_process, process* running_process)</strong> und <strong>process* xx_tick (process* running_process)</strong> aufgerufen.</p>
+<p>Wenn zu einem bestimmten Zeitpunkt ein neuer Prozess ankommt, dann wird ein pointer auf ein process-Objekt (siehe <a href="./lib/process.h">process.h</a> für weitere Informationen) in <strong>xx_new_arrival</strong> als Parameter <em>arriving_process</em> übergeben. Andernfalls ist dieser Parameter <em>NULL</em>. Der Pointer auf <em>running_process</em>, der in diesen beiden Funktionen übergeben wird ist jeweils der zuletzt aktive Prozess (oder NULL, falls kein Prozess aktiv war). Die Funktion <strong>xx_new_arrival</strong> soll, falls es einen neu ankommenden Prozess gibt, diesen verarbeiten (zum Beispiel einer Queue hinzufügen). Der Rückgabewert soll wieder ein Pointer auf den jetzt aktuellen zu bearbeitenden Prozess sein (falls dieser getauscht wurde) oder auf den alten <em>running_process</em>.</p>
+<p>Danach wird die Funktion <strong>xx_tick</strong> aufgerufen. In dieser soll geprüft werden, ob der aktuelle Prozess gewechselt werden muss (zum Beispiel, weil seine Bearbeitungsdauer abgeschlossen ist).
+Es soll ein Pointer zum nun aktuell zu bearbeitenden Prozess zurückgegeben werden. Dies ist dann der Prozess, der auch in der Ausgabe auf dem Bildschirm erscheint.</p>
+<p>Nachdem alle Prozesse bearbeitet wurden, wird einmalig die Funktion <strong>void xx_finish()</strong> aufgerufen. Hier kann alles erledeigt werden, was es noch zu erledigen gibt (Speicher freigeben etc.).</p>
+<h2 id="hilfenhinweise">Hilfen/Hinweise</h2>
+<h3 id="textausgabe-auf-der-konsole">Textausgabe auf der Konsole</h3>
+<p>Achten Sie darauf, keine zusätzlichen Zeichen auf der Standardausgabe im fertigen Programm auszugeben, da dies das automatische Testen erschwert. Zusätzliche Ausgaben werden dementsprechend mit Punktabzug bewertet.</p>
+<h3 id="queue">Queue</h3>
+<p>Es steht ihnen eine Implementierung einer Queue zur Verfügung. Die nutzbaren Funktionen dieser Queue sind in <a href="lib/queue.h">queue.h</a> beschrieben. Diese Queue wird auch in der vorgegeben implementierung des FCFS-Schedulers verwendet.</p>
+<h3 id="kompiliertes-programm">Kompiliertes Programm</h3>
+<p>Die Vorgabe enthält das Programm <strong>scheduler_vorgabe</strong>. In diesem sind bereits alle Scheduler einprogrammiert. Sie können dieses Programm nutzen um die Ausgaben mit Ihrem Programm zu vergleichen. Falls sich das Programm nicht ausführen lässt, müssen sie es möglicherweise vorher ausführbar machen. Geben Sie dazu folgendes in die Konsole ein:</p>
+<pre><code>$ chmod +x ./scheduler_vorgabe
+</code></pre>
+<h3 id="valgrind">Valgrind</h3>
+<p>Achten Sie darauf, dass dynamisch allokierter Speicher wieder freigegeben wird. Der allokierte Speicher für die <em>process</em>-Objekte werden schon von der Vorgabe freigegeben. Geben sie also nur selbst allokierten Speicher frei.
+Um zu prüfen, ob der Speicher komplett freigegeben wurde kann das Programm <em>valgrind</em> genutzt werden. Beispielaufruf:</p>
+<pre><code>$ valgrind ./scheduler RR 0 4 2 3 3 5 5 1 1 3 
+</code></pre>
+<h3 id="makefile">Makefile</h3>
+<p>In der Vorgabe wird ein makefile mitgeliefert. Um das Projekt zu kompilieren rufen sie einfach im Ordner, in dem sich das makefile befindet</p>
+<pre><code>$ make
+</code></pre>
+<p>auf. Sie müssen diese Datei nicht verändern. Sollten Sie allerdings weitere .c oder .h Files einbinden wollen, dann passen Sie das makefile entsprechend an. Es ist allerdings nicht nötig weitere Datein hinzuzufügen. <em>Ändern Sie nicht die Files <strong>main.c</strong>, <strong>colors.c</strong> und <strong>colors.h</strong></em></p>
+<h3 id="farbausgbae">Farbausgbae</h3>
+<p>Die bunte Ausgabe soll Ihnen helfen, schneller einen Überblick über die Ausgabe zu bekommen. Falls Sie jedoch Probleme mit der Farbausgabe auf Ihrem Terminal haben, dann können Sie das Flag -c mitübergeben, um die farbige Ausgabe zu unterbinden:</p>
+<pre><code>$ ./scheduler FCFS 0 4 2 3 4 2 -c
+</code></pre>
+<p>Ihr Projekt sollte ohne Warnungen und Fehlern auf den Uni-Rechnern mit Ubuntu 18 kompilieren und ausführbar sein. Testen Sie die Funktionalität, indem Sie per SSH auf einen Unirechner zugreifen und Ihr Programm dort testen. Informationen zur Nutzung von SSH finden Sie auf der Webseite der <a href="https://wiki.freitagsrunde.org/SSH">Freitagsrunde</a>.</p>
+
+    </body>
+    </html>
